@@ -14,8 +14,8 @@ import subprocess
 
 def get_print_statement(line):
     # TODO: use regex to better recognize assignment operator
-    var, expr = line.split(" = ")
-    var = var.split()[1].strip()
+    exprs = line.split(" = ")
+    var = exprs[0].split()[1].strip()
     return f"printf(\"%d\\n\", {var});\n"
 
 base_file = "base_file.c"
@@ -43,5 +43,12 @@ while True:
     subprocess.call(["gcc", "-std=c99", f"{repl_file}", "-o", "repl_executable"])
     subprocess.call("./repl_executable")
     
-    insert_index += 2
+    # remove print line
+    base_lines.pop(insert_index + 2)
+    new_file_string = "".join(base_lines)
+    
+    with open(repl_file, "w") as f:
+        f.write(new_file_string)
+        
+    insert_index += 1
     base_file = repl_file

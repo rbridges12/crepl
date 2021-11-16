@@ -5,15 +5,8 @@
 
 int main()
 {
-int x = 3;
-printf("%d\n", x);
 int y = 3;
-printf("%d\n", y);
-int z = 4;
-printf("%d\n", z);
-int res = x == y;
-printf("%d\n", res);
-int res1 = x == z;
-printf("%d\n", res1);
+int z = 1;
+int a = y + z;
     return 0;
 }
