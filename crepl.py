@@ -32,7 +32,6 @@ while True:
     with open(base_file, "r") as f:
         base_lines = f.readlines()
 
-    # TODO: remove/overwrite print statement in consecutive repl entry
     base_lines.insert(insert_index + 1, line)
     base_lines.insert(insert_index + 2, print_line)
     new_file_string = "".join(base_lines)
